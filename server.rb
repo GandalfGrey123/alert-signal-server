@@ -25,7 +25,7 @@ end
 
 #get port from command line as first arg
 def run(args) 
-   return false if validate(args) == false
+  #return false if validate(args) == false
    server = TCPServer.new args[0].to_i
    client_sockets =[]
 
@@ -34,7 +34,7 @@ def run(args)
    rescue SignalException => e
 
     puts "initializing graceful shutdown ... "
-    
+
     server.close    
     client_sockets.each{ |next_sock|
       next_sock.close
