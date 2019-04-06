@@ -1,0 +1,6 @@
+{
+   "server_ip" : "13.52.85.46",
+   "dev_ip": "localhost",
+   "server_port" : "2000",
+   "valid_ports": ["443","2000"]  
+}
