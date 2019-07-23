@@ -2,6 +2,10 @@
 require 'socket'
 require 'time'
 
+require 'json'
+
+ENV = JSON.parse( File.read('./config/config.json') )
+
 LOG_PATH = "./bin/log "
 ARG_LENGTH = 1
 VALID_PORTS= [2000]
@@ -13,6 +17,11 @@ def validate(args)
   else 
   	return true
   end
+end
+
+def master_alert(text_message)
+ blowerio = RestClient::Resource.new(ENV['sms_uri'])
+ blowerio['/messages'].post :to => ENV['master_phone'], :message => text_message
 end
 
 def log_message(message)
